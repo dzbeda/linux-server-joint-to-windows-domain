@@ -1,1 +1,50 @@
+[sssd]
 
+override_space = _
+config_file_version = 2
+reconnection_retries = 3
+sbus_timeout = 30
+services = nss, pam
+domains = {{ domain_name }}
+ 
+[nss]
+
+reconnection_retries = 3
+ 
+[pam]
+
+reconnection_retries = 3
+ 
+[domain/{{ domain_name }}]
+
+debug_level = 3
+ad_enable_gc = false
+cache_credentials = true
+ldap_id_mapping = true
+ 
+use_fully_qualified_names = false
+full_name_format = %1$s
+fallback_homedir = /home/%u
+default_shell = /bin/bash
+ignore_group_members = true
+krb5_realm = {{ domain_name | upper }}
+ad_domain = {{ domain_name }}
+id_provider = ad
+chpass_provider = ad
+auth_provider = ad
+access_provider = ad
+case_sensitive = false
+enumerate = false
+ldap_schema = ad
+ldap_user_principal = nosuchattr
+ldap_force_upper_case_realm = true
+ldap_purge_cache_timeout = 0
+ldap_account_expire_policy = ad
+ldap_use_tokengroups = false
+krb5_validate = false
+
+##Secure LDAP support 
+{% if support_secure_ldap == true %}
+ad_use_ldaps = True
+krb5_store_password_if_offline = True
+{% endif %}

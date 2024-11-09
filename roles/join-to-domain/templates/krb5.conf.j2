@@ -1,0 +1,37 @@
+[libdefaults]
+	default_realm = {{ domain_name | upper }}
+
+# The following krb5.conf variables are only for MIT Kerberos.
+	kdc_timesync = 1
+	ccache_type = 4
+	forwardable = true
+	proxiable = true
+
+# The following encryption type specification will be used by MIT Kerberos
+# if uncommented.  In general, the defaults in the MIT Kerberos code are
+# correct and overriding these specifications only serves to disable new
+# encryption types as they are added, creating interoperability problems.
+#
+# The only time when you might need to uncomment these lines and change
+# the enctypes is if you have local software that will break on ticket
+# caches containing ticket encryption types it doesn't know about (such as
+# old versions of Sun Java).
+
+	default_tgs_enctypes = aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 rc4-hmac
+	default_tkt_enctypes = aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 rc4-hmac
+	permitted_enctypes = aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 rc4-hmac
+
+
+# The following libdefaults parameters are only for Heimdal Kerberos.
+	#fcc-mit-ticketflags = true
+
+[realms]
+	
+        {{ domain_name | upper }} = {
+        kdc = {{ domain_host_fqdn }}
+        admin_server = {{ domain_host_fqdn }}
+        }
+
+[domain_realm]
+        .{{ domain_name }} = {{ domain_name | upper }}
+        {{ domain_name }} = {{ domain_name | upper }}
