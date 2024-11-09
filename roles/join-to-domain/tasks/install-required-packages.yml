@@ -1,0 +1,31 @@
+- name: Install Krb5 components
+  yum:
+    name:
+      - krb5-workstation
+      - krb5-libs
+    state: present
+    update_cache: true
+
+- name: Install SSSD components
+  yum:
+    name:
+      - sssd
+      - oddjob
+      - oddjob-mkhomedir
+    state: present
+    update_cache: true
+
+- name: Install OpenLdap components
+  yum:
+    name:
+      - openldap
+      - openldap-clients
+    state: present
+    update_cache: true
+
+- name: Install adcli
+  yum:
+    name:
+      - adcli
+    state: present
+    update_cache: true

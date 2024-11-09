@@ -1,0 +1,4 @@
+  - name: Deploy krb5.conf teamplate to /ete folder
+    template:
+      src: ./krb5.conf.j2
+      dest: /etc/krb5.conf

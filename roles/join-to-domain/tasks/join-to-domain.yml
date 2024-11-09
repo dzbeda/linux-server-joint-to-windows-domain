@@ -1,0 +1,7 @@
+  - name: join to domain using adcli - Secure LDAP
+    shell: echo "{{ bind_password }}" | adcli  join --use-ldaps -S {{ domain_host_fqdn }} -D {{ domain_name }} -U {{ domain_user }} --stdin-password  -O {{ domain_path_to_manage_clients }}
+    when: support_secure_ldap == true
+
+  - name: join to domain using adcli - None Secure LDAP
+    shell: echo "{{ bind_password }}" | adcli join -S {{ domain_host_fqdn }} -D {{ domain_name }} -U {{ domain_user }} --stdin-password -O {{ domain_path_to_manage_clients }}
+    when: support_secure_ldap != true

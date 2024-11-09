@@ -1,0 +1,9 @@
+- name: Copy certificate to Linux OS
+  copy:
+    src: "{{ root_ca_public_certificate_location }}/{{ root_ca_public_certificate_file_name }}"
+    dest: "{{ linux_public_certificate_path }}"
+  when: support_secure_ldap == true
+
+- name: Upload public certificate to Redhat 8 global certificate trust
+  command: update-ca-trust
+  when: support_secure_ldap == true

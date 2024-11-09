@@ -1,0 +1,5 @@
+  - name: update OpenLdap configuration in order to overcome ActiveDirectory updates after hardening
+    lineinfile:
+      path: /etc/openldap/ldap.conf
+      line: SASL_CBINDING tls-endpoint
+    when: support_secure_ldap == true

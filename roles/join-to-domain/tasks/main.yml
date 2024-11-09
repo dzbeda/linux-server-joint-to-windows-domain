@@ -1,1 +1,14 @@
-
+---
+# tasks file for join-to-domain
+#Install RPM packages
+- include: install-required-packages.yml
+# Deploy krb5 configuration 
+- include: krb5-deploy-configuration.yml
+# Add root CA certificate to server - Required only for secure LDAP 
+- include: add-rootca-public-certificate.yml
+# Join to domain Using adcli
+- include: join-to-domain.yml
+# Update openldap configuration - required only for secure LDAP 
+- include: openldap-configuration-update.yml
+# SSSD Deploy configuratuon and run service  
+- include: sssd-deploy-configuration.yml

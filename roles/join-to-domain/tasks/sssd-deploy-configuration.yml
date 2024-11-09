@@ -1,0 +1,17 @@
+- name: Copy sssd.conf
+  template: 
+    src: sssd.conf.j2
+    dest: /etc/sssd/sssd.conf
+    mode: 0700
+    owner: root
+    group: root
+
+- name: enable the sssd service
+  service:
+      name: sssd
+      enabled: yes
+
+- name: Restart the sssd service
+  service:
+      name: sssd
+      state: restarted
