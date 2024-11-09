@@ -17,4 +17,9 @@ This is an Ansible playbook that connects a Linux server to a Windows Active Dir
 
 
 
-**Linkedin profile:**   https://www.linkedin.com/in/davidzbeda
+## Connect on LinkedIn and Medium
+Feel free to connect with me on LinkedIn or Medium for more insights on Big Data, DevOps, and cloud-native solutions:
+www.linkedin.com/in/davidzbeda
+https://medium.com/@dudu.zbeda_13698
+
+***David Zbeda***
