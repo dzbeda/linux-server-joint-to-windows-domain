@@ -1,0 +1,10 @@
+- hosts: ubuntu
+  vars_files: ./input-join-to-domain.yml
+  gather_facts: true
+  become: true
+  vars_prompt:
+    - name: "bind_password"
+      prompt: "Active Directory user bind password"
+      private: no
+  roles:
+    - join-to-domain

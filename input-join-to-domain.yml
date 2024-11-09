@@ -1,0 +1,20 @@
+#This define if the Linux Client needs to be connect using LDAP (Port 389) or Secure LDAP (Port 636). The options are "false" or "true"
+support_secure_ldap: true
+
+# Active Directory server information and Domain
+domain_name: zbeda.local
+domain_host_fqdn: dc.zbeda.local
+
+#This is a domain user that have permission to add server to domain. During the ansible playbook run the user will be required to type the password manually. 
+#The user password will be asked once you will run the palybbok 
+domain_user: administrator
+
+# a LDAP DN representing an organizational unit in which the computer account should be placed
+domain_path_to_manage_clients: CN=Computers,DC=zbeda,DC=local
+
+# Root CA
+# Location of the root CA public certificate on the server running ansible 
+root_ca_public_certificate_location: ./
+root_ca_public_certificate_file_name: newcert.cer
+# Location of the public certificate directory in Centos and Redat 
+linux_public_certificate_path: /etc/pki/ca-trust/source/anchors/
