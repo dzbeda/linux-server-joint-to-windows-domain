@@ -23,4 +23,4 @@ www.linkedin.com/in/davidzbeda
 
 https://medium.com/@dudu.zbeda_13698
 
-***David Zbeda***
+***David (Dudu) Zbeda***
